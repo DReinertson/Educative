@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+#rect {
+  width: 350px;
+  height: 250px;
+  padding: 10px;
+  border: 3px solid blue;
+  
+}
+</style>
+
+<!-- Add your code here -->
+<script>
+    function allowDrop(ev){
+        ev.preventDefault();
+    }
+
+    function drag(ev){
+        ev.dataTransfer.setData('text', ev.target.id);
+    }
+
+    function drop(ev){
+        ev.preventDefault();
+        let data = ev.dataTransfer.getData('text');
+        ev.target.appendChild(document.getElementById(data));
+    }
+
+</script>
+</head>
+<body>
+<h2>Educative: Drag and Drop API Exercise </h2>
+<p>Drag the Educative logo image into the rectangle below:</p>
+
+<!-- Add your code here -->
+<div id="rect" ondrop = "drop(event)" ondragover="allowDrop(event)"></div>
+<blockquote> Educative Logo </blockquote>
+<!-- Add your code here -->
+<img ondragstart = 'drag(event)' draggable = 'true'id="drag_logo" src="https://cdn-images-1.medium.com/max/1200/1*dMSWcBZCuzyRDeMr4uE_og.png"  width="340" height="235">
+
+</body>
+</html>
