@@ -7,23 +7,20 @@ let findBuySellStockPrices = function(stockNums) {
 
   
   let low = stockNums[0];
-  let high = 0; 
-  let max = 0;
+  let high = stockNums[1]; 
+  let bestProfit = -Infinity; 
+  let currentProfit = 0; 
   for (let x = 1; x < stockNums.length; x++){
-    console.log('value: ', stockNums[x]);
-    console.log('max: ', max);
-    console.log('low: ', low);
-    console.log('high: ', high);
-    console.log('---------------------------');
-    if (stockNums[x] - low > max){
-      max = stockNums[x] - low;
+
+    currentProfit = stockNums[x] - low;     
+    if (currentProfit > bestProfit){
+      bestProfit = currentProfit;
       high = stockNums[x];
-    } else {
-      if (stockNums[x] < low){
-        low = stockNums[x];
-      }
+    }
+    if (stockNums[x] < low){
+      low = stockNums[x];
     }
   }
   
-  return [high - max, high]; //Return a tuple with (high, low) price values
+  return [high - bestProfit, high]; //Return a tuple with (high, low) price values
 };
