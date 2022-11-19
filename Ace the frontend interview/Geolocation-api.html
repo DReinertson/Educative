@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+<body>
+<h1> Coordinates Finder <img src="https://cdn.pixabay.com/photo/2018/01/03/04/48/compass-3057603_960_720.png" width="100" height="100" ></h1>
+<p>Click the button to get your coordinates.</p>
+
+<button  class="button" onclick="getLocation()">Try It</button>
+<p id="icoords"></p>
+
+
+
+<!-- Add your code here -->
+
+<script>
+    let target = document.getElementById('icoords');
+
+    function getLocation(){
+        if (navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            target.innerHTML = "Geolocation is not supported by this browser.";
+        }
+
+    }
+
+    function showPosition(pos){
+        target.innerHTML = "latitude: " + pos.coords.latitude + ' longitude: ', pos.coords.longitude;
+    }
+</script>
+</body>
+</html>
