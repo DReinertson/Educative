@@ -1,12 +1,20 @@
 function reArrange(arr) {
   let newArr = [];
+  let left = 0;
+  let right = arr.length - 1;
 
-  for (let x = 0; x < arr.length; x++){
-    if (arr[x] < 0){
-      newArr.unshift(arr[x]);
+  while (left < right){
+    if (arr[left] >= 0 && arr[right] < 0){
+      let temp = arr[left];
+      arr[left] = arr[right];
+      arr[right] = temp;
+      left ++;
+      right --;
+    } else if (arr[left] < 0){
+      left++;
     } else{
-      newArr.push(arr[x]);
+      right--;
     }
   }
-  return newArr;
+  return arr;
 }
